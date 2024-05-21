@@ -5,8 +5,8 @@ import RaceResults from "./RaceResults.tsx";
 function Homepage() {
     return (<div className={'w-screen h-screen bg-base-100 bg-no-repeat bg-fixed bg-cover'}>
         <NavBar/>
-        <Countdown/>
-        <RaceResults/>
+        {/*<Countdown/>*/}
+        {/*<RaceResults/>*/}
     </div>)
 }
 

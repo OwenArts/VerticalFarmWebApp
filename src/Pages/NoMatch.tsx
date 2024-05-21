@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import ErrorAlert from "../Alert/ErrorAlert.tsx";
-import {ToastContainer, toast, Bounce} from 'react-toastify';
+import {Bounce, toast, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function NoMatch() {
@@ -26,7 +26,9 @@ export default function NoMatch() {
                 <div className="mt-10 flex items-center justify-center gap-x-6">
                     <a
                         href="/"
-                        className="rounded-md bg-accent px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                        className="rounded-md bg-base-100 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm
+                        hover:bg-base-200 hover:text-base-content focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
+                        focus-visible:outline-indigo-600"
                     >
                         Go back home
                     </a>
