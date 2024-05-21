@@ -3,6 +3,7 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import Homepage from './Pages/Home/Homepage.tsx';
 import NoMatch from "./Pages/NoMatch.tsx";
 import React from "react";
+import DigitalClock from "./UI components/DigitalClock.tsx";
 
 function App() {
     // localStorage.clear()
@@ -13,6 +14,8 @@ function App() {
                     {/*<Route element={<Layout/>} >*/}
                         <Route path="/" element={<Homepage/>} />
                         <Route path="*" element={<NoMatch/>} />
+                        <Route path="/drawers" element={<DigitalClock/>} />
+                        <Route path="/settings" element={<DigitalClock/>} />
                         {/*<Route path="/digitalclock" element={<DigitalClock/>} />*/}
                         {/*<Route path="/drivers" element={<DriversPage/>} />*/}
                         {/*<Route path="/teams" element={<TeamsPage/>} />*/}

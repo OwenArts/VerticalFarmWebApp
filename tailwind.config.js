@@ -5,7 +5,8 @@ export default {
     content: [
         "./index.html",
         "./src/**/*.{js,ts,jsx,tsx}",
-    ], theme: {
+    ],
+    theme: {
         extend: {
             backgroundImage: {
                 'italy-background': "url('assets/background.jpg')",
@@ -29,11 +30,13 @@ export default {
             },
             fontFamily: {
                 'Standard': "QuickSand"
-            }
+            },
         },
-    }, plugins: [
+    },
+    plugins: [
         daisyui,
-    ], daisyui: {
+    ],
+    daisyui: {
         themes:
             [
                 {
@@ -81,4 +84,3 @@ export default {
             ],
     }
 }
-

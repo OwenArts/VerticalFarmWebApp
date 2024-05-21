@@ -32,7 +32,7 @@ export default function NoMatch() {
                     >
                         Go back home
                     </a>
-                    <a className="text-sm font-semibold text-base-content" onClick={notify}>
+                    <a className="text-sm font-semibold text-base-content hover:text-accent" onClick={notify}>
                         Contact support <span aria-hidden="true">→</span>
                     </a>
                 </div>
