@@ -1,5 +1,6 @@
-export default function NavBar() {
+import {useLocation} from "react-router-dom";
 
+export default function NavBar() {
     return (
         <div className="drawer">
             <input id="my-drawer-3" type="checkbox" className="drawer-toggle"/>
@@ -16,7 +17,7 @@ export default function NavBar() {
                         </label>
                     </div>
                     <div className="flex-none hidden lg:block">
-                        <ul className="menu menu-horizontal"> {/* Navbar content*/}
+                        <ul className="menu menu-horizontal">
                             <NavBarOptions/>
                         </ul>
                     </div>
@@ -25,7 +26,7 @@ export default function NavBar() {
             {/* Sidebar */}
             <div className="drawer-side">
                 <label htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay"></label>
-                <ul className="menu p-4 w-80 min-h-full bg-base-300"> {/* Sidebar content */}
+                <ul className="menu p-4 w-80 min-h-full bg-base-300">
                     <NavBarOptions/>
                 </ul>
             </div>
@@ -34,10 +35,12 @@ export default function NavBar() {
 }
 
 function NavBarOptions() {
+    const location = useLocation();
+
     return (
         <>
             <li>
-                <a className="btn btn-ghost text-base-content text-xl items-center group"
+                <a className={`btn btn-ghost text-base-content text-xl items-center group ${location.pathname === '/' ? 'text-accent stroke-accent' : ''}`}
                    href="/">
                     <svg xmlns="http://www.w3.org/2000/svg"
                          className="icon icon-tabler icon-tabler-home-2 stroke-base-content transition-colors duration-300 ease-in-out group-hover:stroke-accent"
@@ -54,7 +57,7 @@ function NavBarOptions() {
                 </a>
             </li>
             <li>
-                <a className="btn btn-ghost text-base-content text-xl items-center group"
+                <a className={`btn btn-ghost text-base-content text-xl items-center group ${location.pathname === '/drivers' ? 'text-accent stroke-accent' : ''}`}
                    href="/drivers">
                     <svg xmlns="http://www.w3.org/2000/svg"
                          className="icon icon-tabler icon-tabler-helmet stroke-base-content transition-colors duration-300 ease-in-out group-hover:stroke-accent"
@@ -62,8 +65,7 @@ function NavBarOptions() {
                          fill="none" strokeLinecap="round" strokeLinejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                         <path d="M12 4a9 9 0 0 1 5.656 16h-11.312a9 9 0 0 1 5.656 -16z"/>
-                        <path
-                            d="M20 9h-8.8a1 1 0 0 0 -.968 1.246c.507 2 1.596 3.418 3.268 4.254c2 1 4.333 1.5 7 1.5"/>
+                        <path d="M20 9h-8.8a1 1 0 0 0 -.968 1.246c.507 2 1.596 3.418 3.268 4.254c2 1 4.333 1.5 7 1.5"/>
                     </svg>
                     <p className="transition-colors duration-300 ease-in-out group-hover:text-accent">
                         Drivers
@@ -71,7 +73,7 @@ function NavBarOptions() {
                 </a>
             </li>
             <li>
-                <a className="btn btn-ghost text-base-content text-xl items-center group"
+                <a className={`btn btn-ghost text-base-content text-xl items-center group ${location.pathname === '/teams' ? 'text-accent stroke-accent' : ''}`}
                    href="/teams">
                     <svg xmlns="http://www.w3.org/2000/svg"
                          className="icon icon-tabler icon-tabler-users-group stroke-base-content transition-colors duration-300 ease-in-out group-hover:stroke-accent"
@@ -91,7 +93,7 @@ function NavBarOptions() {
                 </a>
             </li>
             <li>
-                <a className="btn btn-ghost text-base-content text-xl items-center group"
+                <a className={`btn btn-ghost text-base-content text-xl items-center group ${location.pathname === '/standings' ? 'text-accent stroke-accent' : ''}`}
                    href="/standings">
                     <svg xmlns="http://www.w3.org/2000/svg"
                          className="icon icon-tabler icon-tabler-report-analytics stroke-base-content transition-colors duration-300 ease-in-out group-hover:stroke-accent"
@@ -113,3 +115,4 @@ function NavBarOptions() {
         </>
     );
 }
+    
