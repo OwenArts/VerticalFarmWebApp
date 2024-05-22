@@ -2,7 +2,7 @@ import {useLocation} from "react-router-dom";
 
 export default function NavBar() {
     return (
-        <div className="drawer">
+        <div className="drawer z-40">
             <input id="my-drawer-3" type="checkbox" className="drawer-toggle"/>
             <div className="drawer-content flex flex-col">
                 {/* Navbar */}
@@ -24,7 +24,7 @@ export default function NavBar() {
                 </div>
             </div>
             {/* Sidebar */}
-            <div className="drawer-side">
+            <div className="drawer-side z-50">
                 <label htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay"></label>
                 <ul className="menu p-4 w-80 min-h-full bg-base-300">
                     <NavBarOptions/>

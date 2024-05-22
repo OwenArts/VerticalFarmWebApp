@@ -86,7 +86,7 @@ function SignUp() {
                                 up
                             </button>
                             <p className="text-sm font-medium text-base-content">
-                                Already have an account?<a href="/formulaoneweb.client/src/Pages/SignIn"
+                                Already have an account?<a href="/verticalfarm.staff/src/Pages/SignIn"
                                                            className="ml-3 font-medium text-primary underline hover:text-secondary">Sign
                                 in</a>
                             </p>
