@@ -11,18 +11,10 @@ function App() {
         <>
             <BrowserRouter>
                 <Routes>
-                    {/*<Route element={<Layout/>} >*/}
-                        <Route path="/" element={<Homepage/>} />
-                        <Route path="*" element={<NoMatch/>} />
-                        <Route path="/drawers" element={<DigitalClock/>} />
-                        <Route path="/settings" element={<DigitalClock/>} />
-                        {/*<Route path="/digitalclock" element={<DigitalClock/>} />*/}
-                        {/*<Route path="/drivers" element={<DriversPage/>} />*/}
-                        {/*<Route path="/teams" element={<TeamsPage/>} />*/}
-                        {/*<Route path="/standings" element={<StandingsPage/>} />*/}
-                        {/*<Route path="/signup" element={<SignUp/>} />*/}
-                        {/*<Route path="/signin" element={<SignIn/>} />*/}
-                    {/*</Route>*/}
+                    <Route path="/" element={<Homepage/>}/>
+                    <Route path="*" element={<NoMatch/>}/>
+                    <Route path="/drawers" element={<DigitalClock/>}/>
+                    <Route path="/settings" element={<DigitalClock/>}/>
                 </Routes>
             </BrowserRouter>
         </>
