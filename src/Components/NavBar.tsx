@@ -42,7 +42,9 @@ function NavBarOptions() {
             <li>
                 <a className={`btn btn-ghost text-base-content text-xl items-center group ${location.pathname === '/' ? 'text-secondary' : ''}`}
                    href="/">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-home-2 ${location.pathname === '/' ? 'stroke-secondary' : 'stroke-base-content'} transition-colors duration-300 ease-in-out group-hover:stroke-secondary" width="44"
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         className="icon icon-tabler icon-tabler-home-2 ${location.pathname === '/' ? 'stroke-secondary' : 'stroke-base-content'} transition-colors duration-300 ease-in-out group-hover:stroke-secondary"
+                         width="44"
                          height="44" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none"
                          strokeLinecap="round" strokeLinejoin="round">
                         <path d="M5 12l-2 0l9 -9l9 9l-2 0"/>
@@ -57,7 +59,9 @@ function NavBarOptions() {
             <li>
                 <a className={`btn btn-ghost text-base-content text-xl items-center group ${location.pathname === '/drawers' ? 'text-secondary' : ''}`}
                    href="/drawers">
-                <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-leaf ${location.pathname === '/' ? 'stroke-secondary' : 'stroke-base-content'} transition-colors duration-300 ease-in-out group-hover:stroke-secondary" width="44"
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         className="icon icon-tabler icon-tabler-leaf ${location.pathname === '/' ? 'stroke-secondary' : 'stroke-base-content'} transition-colors duration-300 ease-in-out group-hover:stroke-secondary"
+                         width="44"
                          height="44" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none"
                          strokeLinecap="round" strokeLinejoin="round">
                         <path d="M5 21c.5 -4.5 2.5 -8 7 -10"/>
@@ -71,7 +75,9 @@ function NavBarOptions() {
             <li>
                 <a className={`btn btn-ghost text-base-content text-xl items-center group ${location.pathname === '/settings' ? 'text-secondary' : ''}`}
                    href="/settings">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-settings ${location.pathname === '/' ? 'stroke-secondary' : 'stroke-base-content'} transition-colors duration-300 ease-in-out group-hover:stroke-secondary" width="44"
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         className="icon icon-tabler icon-tabler-settings ${location.pathname === '/' ? 'stroke-secondary' : 'stroke-base-content'} transition-colors duration-300 ease-in-out group-hover:stroke-secondary"
+                         width="44"
                          height="44" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none"
                          strokeLinecap="round" strokeLinejoin="round">
                         <path
