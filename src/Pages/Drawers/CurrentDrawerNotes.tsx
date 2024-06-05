@@ -26,10 +26,9 @@ export default function CurrentDrawerNotes({ drawer }: CurrentDrawerInformationP
     }, [drawer]); // Dependency on drawer ensures useEffect runs when drawer changes
 
     return (
-        <div>
+        <div className={"h-fit"}>
             {drawerNotes.map(note => (
                 <div key={note.NoteId}>
-                    {/* Render drawer note details here */}
                     <p>{note.NoteContent}</p>
                 </div>
             ))}

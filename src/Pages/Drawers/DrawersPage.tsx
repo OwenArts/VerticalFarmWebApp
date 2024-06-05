@@ -29,10 +29,11 @@ export default function DrawersPage() {
     }, [drawers]); // Dependency on drawers ensures this runs when drawers update
 
     return (
-        <div className="w-full h-full min-h-screen min-w-screen flex flex-col">
-            <NavBar/>
-            <div className="w-full h-full grid grid-cols-6 grid-rows-8 gap-8">
-                <div className="bg-base-200 row-span-8 col-span-1">
+        <div className="min-h-screen bg-leaves-background bg-no-repeat bg-fixed bg-cover">
+            <NavBar />
+            <div className="grid grid-cols-6 grid-rows-8 gap-8">
+                <div className="bg-base-200 row-span-8 col-span-1 overflow-y-auto">
+                    {/* Add overflow-y-auto to enable vertical scrolling */}
                     <ol>
                         {drawers.map((drawer) => (
                             <li key={drawer.DrawerId}>
@@ -43,17 +44,17 @@ export default function DrawersPage() {
                         ))}
                     </ol>
                 </div>
-                <div className="bg-base-300 row-span-8 col-span-3 p-8 my-8 rounded-box">
+                <div className="bg-base-300 row-span-8 col-span-3 p-8 my-8 rounded-box overflow-y-auto">
+                    {/* Add overflow-y-auto to enable vertical scrolling */}
                     {currentDrawer && (
-                        <CurrentDrawerInformation drawer={currentDrawer}/>
+                        <CurrentDrawerInformation drawer={currentDrawer} />
                     )}
                 </div>
-                <div className="bg-base-300 row-span-8 col-span-2 my-8 rounded-box">
+                <div className="bg-base-300 row-span-8 col-span-2 my-8 rounded-box overflow-y-auto">
+                    {/* Add overflow-y-auto to enable vertical scrolling */}
                     {currentDrawer && (
-                        // <CurrentDrawerInformation drawer={currentDrawer} />
-                        <CurrentDrawerNotes drawer={currentDrawer}/>
+                        <CurrentDrawerNotes drawer={currentDrawer} />
                     )}
-                    {/*<button onClick={fetchDrawers}>Fetch Data</button>*/}
                 </div>
             </div>
         </div>
