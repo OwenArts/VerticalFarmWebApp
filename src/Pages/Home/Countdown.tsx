@@ -76,28 +76,26 @@ function CountDown() {
                             <div className="inline-block w-full min-w-[1em] h-0.5 self-stretch bg-base-content/70"/>
                             <div className="grid grid-flow-col gap-5 text-center auto-cols-max">
                                 <div className="flex flex-col p-2 rounded-box text-neutral-content">
-                                <span
-                                    className="countdown font-black text-3xl text-countdown-content">{padZero(duration.days())}</span>
+                                    <span
+                                        className="countdown font-black text-3xl text-countdown-content">{padZero(duration.days())}</span>
                                     <p className="font-bold text-countdown-content text-lg text-center">days</p>
                                 </div>
-                                <div className="inline-block h-full min-h-[1em] w-0.5 self-stretch bg-base-content/70"/>
                                 <div className="flex flex-col p-2 rounded-box text-neutral-content">
-                                <span
-                                    className="countdown font-black text-3xl text-countdown-content">{padZero(duration.hours())}</span>
+                                    <span
+                                        className="countdown font-black text-3xl text-countdown-content">{padZero(duration.hours())}</span>
                                     <p className="font-bold text-countdown-content text-lg text-center">hours</p>
                                 </div>
-                                <div className="inline-block h-full min-h-[1em] w-0.5 self-stretch bg-base-content/70"/>
                                 <div className="flex flex-col p-2 rounded-box text-neutral-content">
-                                <span
-                                    className="countdown font-black text-3xl text-countdown-content">{padZero(duration.minutes())}</span>
-                                    <p className="font-bold text-countdown-content text-lg text-center">min</p>
+                                    <span
+                                        className="countdown font-black text-3xl text-countdown-content">{padZero(duration.minutes())}</span>
+                                    <p className="font-bold text-countdown-content text-lg text-center">minutes</p>
                                 </div>
-                                <div className="inline-block h-full min-h-[1em] w-0.5 self-stretch bg-base-content/70"/>
                                 <div className="flex flex-col p-2 rounded-box text-neutral-content">
-                                <span
-                                    className="countdown font-black text-3xl text-countdown-content">{padZero(duration.seconds())}</span>
+                                    <span
+                                        className="countdown font-black text-3xl text-countdown-content">{padZero(duration.seconds())}</span>
                                     <p className="font-bold text-countdown-content text-lg text-center">sec</p>
                                 </div>
+
                             </div>
                         </div>
                     </div>
