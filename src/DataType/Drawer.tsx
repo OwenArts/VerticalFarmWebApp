@@ -1,5 +1,5 @@
-import moment from "moment/moment";
 import DrawerData from "./DrawerData.tsx";
+import moment from "moment";
 
 export default class Drawer {
     public DrawerId: string;
@@ -8,7 +8,7 @@ export default class Drawer {
     public content: string;
     public light: boolean;
     public data: DrawerData[];
-    private seedingDate: Date;
+    private _seedingDate: Date;
 
 
     constructor(drawerId: string, drawerPosition: string, name: string, content: string, light: boolean, seedingDate: Date, data: DrawerData[]) {
@@ -17,31 +17,66 @@ export default class Drawer {
         this.name = name;
         this.content = content;
         this.light = light;
-        this.seedingDate = seedingDate;
+        this._seedingDate = seedingDate;
         this.data = data;
     }
 
     public GetAge() {
-        const startDate = moment(this.seedingDate); // Current time
+        const startDate = moment(this._seedingDate); // Current time
         const endDate = moment(); // Count down end date
         const diff = endDate.diff(startDate); // Difference in milliseconds
         const duration = moment.duration(diff); // Convert difference to duration object
         return `${duration.years()} years ${duration.months()} months ${duration.days()} days ${padZero(duration.hours())}:${padZero(duration.minutes())}:${padZero(duration.seconds())}`;
-    }
+    }public GetMostRecentTemperature() {
+        if (this.data === null || this.data.length === 0) {
+            return ''; // Or handle it according to your logic
+        }
 
-    public GetMostRecentTemperature() {
+        const sortedData = DrawerData.sortByTimeStamp(this.data);
+        const mostRecentData = sortedData[0];
 
+        if (mostRecentData) {
+            return mostRecentData.Temperature;
+        } else {
+            return ''; // Or handle it according to your logic
+        }
     }
 
     public GetMostRecentMoistureGround() {
+        if (this.data === null || this.data.length === 0) {
+            return ''; // Or handle it according to your logic
+        }
 
+        const sortedData = DrawerData.sortByTimeStamp(this.data);
+        const mostRecentData = sortedData[0];
+
+        if (mostRecentData) {
+            return mostRecentData.MoistureGround;
+        } else {
+            return ''; // Or handle it according to your logic
+        }
     }
 
     public GetMostRecentMoistureAir() {
+        if (this.data === null || this.data.length === 0) {
+            return ''; // Or handle it according to your logic
+        }
 
+        const sortedData = DrawerData.sortByTimeStamp(this.data);
+        const mostRecentData = sortedData[0];
+
+        if (mostRecentData) {
+            return mostRecentData.MoistureAir;
+        } else {
+            return ''; // Or handle it according to your logic
+        }
     }
 
 
+
+    set seedingDate(value: Date) {
+        this._seedingDate = value;
+    }
 }
 
 function padZero(number) {
