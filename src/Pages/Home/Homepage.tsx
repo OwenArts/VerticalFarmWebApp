@@ -4,10 +4,10 @@ import Drawer from "../../DataType/Drawer.tsx";
 import {CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis} from 'recharts';
 
 const drawerData = [
-    new Drawer("Closed", 22.5, 55, 40, "Drawer 1", "Arugula", true,  new Date(Date.now())),
-    new Drawer("Closed", 24.3, 50, 42, "Drawer 2", "Arugula", true,  new Date(Date.now())),
-    new Drawer("Closed", 21.8, 60, 38, "Drawer 3", "Lettuce", false,  new Date(Date.now())),
-    new Drawer("Closed", 23.1, 58, 45, "Drawer 4", "Lettuce", false,  new Date(Date.now())),
+    new Drawer("id", "Closed", 22.5, 55, 40, "Drawer 1", "Arugula", true,  new Date(Date.now())),
+    new Drawer("id", "Closed", 24.3, 50, 42, "Drawer 2", "Arugula", true,  new Date(Date.now())),
+    new Drawer("id", "Closed", 21.8, 60, 38, "Drawer 3", "Lettuce", false,  new Date(Date.now())),
+    new Drawer("id", "Closed", 23.1, 58, 45, "Drawer 4", "Lettuce", false,  new Date(Date.now())),
 ];
 
 const generateDrawerData = () => {

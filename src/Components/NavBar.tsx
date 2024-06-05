@@ -2,7 +2,7 @@ import {useLocation} from "react-router-dom";
 
 export default function NavBar() {
     return (
-        <div className="drawer z-40">
+        <nav className="drawer z-40 w-full sticky top-0">
             <input id="my-drawer-3" type="checkbox" className="drawer-toggle"/>
             <div className="drawer-content flex flex-col">
                 {/* Navbar */}
@@ -30,7 +30,7 @@ export default function NavBar() {
                     <NavBarOptions/>
                 </ul>
             </div>
-        </div>
+        </nav>
     );
 }
 

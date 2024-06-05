@@ -42,10 +42,10 @@ export default {
                 {
                     day: {
                         ...["day"],
-                        "primary": "#A3B18A",
-                        "secondary": "#588157",
+                        "primary": "#588157",
+                        "secondary": "#A3B18A",
                         "accent": "#0E7490",
-                        "neutral": "#181818",
+                        "neutral": "#588157",
                         "base": "#A3B18A",
                         "base-100": "#588157",
                         "base-200": "#3A5A40",
@@ -62,10 +62,10 @@ export default {
                     },
                     night: {
                         ...["night"],
-                        "primary": "#A3B18A",
-                        "secondary": "#588157",
+                        "primary": "#588157",
+                        "secondary": "#A3B18A",
                         "accent": "#0E7490",
-                        "neutral": "#181818",
+                        "neutral": "#588157",
                         "base": "#A3B18A",
                         "base-100": "#588157",
                         "base-200": "#3A5A40",
