@@ -1,6 +1,5 @@
 import {useEffect, useState} from "react";
 import moment from "moment";
-import NextRace from "../../DataType/Race/NextRace.tsx";
 
 function CountDown() {
     const [duration, setDuration] = useState(moment.duration());
@@ -25,10 +24,10 @@ function CountDown() {
                 setDuration(duration); // Update duration state
                 if (duration.asSeconds() <= 0) {
                     FetchNextRace().then(data => {
-                        const nextRace = new NextRace(data[0].season, data[0].round, data[0].circuitName, data[0].raceName, data[0].country, data[0].raceStart);
-                        localStorage.setItem('nextRace', JSON.stringify(nextRace));
-                        console.log(`Next race from local storage: {${nextRace.season}, ${nextRace.round}, ${nextRace.circuitName}, ${nextRace.raceName}, ${nextRace.country}, ${nextRace.raceStart}}`)
-                        setRace(nextRace);
+                        // const nextRace = new NextRace(data[0].season, data[0].round, data[0].circuitName, data[0].raceName, data[0].country, data[0].raceStart);
+                        // localStorage.setItem('nextRace', JSON.stringify(nextRace));
+                        // console.log(`Next race from local storage: {${nextRace.season}, ${nextRace.round}, ${nextRace.circuitName}, ${nextRace.raceName}, ${nextRace.country}, ${nextRace.raceStart}}`)
+                        // setRace(nextRace);
                     }).catch(error => console.error('Error fetching next race:', error));
                 }
             }, 1000);
@@ -36,8 +35,8 @@ function CountDown() {
             // Clean up the interval on component unmount
             return () => clearInterval(intervalId);
         } else {
-            const nextRace = new NextRace("", "", "", "", "", new Date);
-            localStorage.setItem('nextRace', JSON.stringify(nextRace));
+            // const nextRace = new NextRace("", "", "", "", "", new Date);
+            // localStorage.setItem('nextRace', JSON.stringify(nextRace));
         }
     }, [race, initialized]); // Run effect whenever raceDate changes
 
@@ -47,7 +46,7 @@ function CountDown() {
         if (raceString) {
             try {
                 const raceData = JSON.parse(raceString);
-                return new NextRace(raceData.season, raceData.round, raceData.circuitName, raceData.raceName, raceData.country, raceData.raceStart);
+                // return new NextRace(raceData.season, raceData.round, raceData.circuitName, raceData.raceName, raceData.country, raceData.raceStart);
             } catch (error) {
                 console.error("Error parsing JSON:", error); // Log any errors that occur during parsing
                 return null;

@@ -1,37 +1,25 @@
 import NavBar from "../../Components/NavBar.tsx";
-import DrawerInformationCard from "../../Components/DrawerInformationCard.tsx";
-import {DrawerInfoType} from "../../Enums/DrawerInfoType.tsx";
-import Drawer from "../../DataType/Drawer.tsx";
-
-const drawer = new Drawer("Closed", 22.5, 30, 40, "Drawer 1", "Lettuce", true, new Date("2014-09-05T17:57:28.556094Z"));
+import CurrentDrawerInformation from "./CurrentDrawerInformation.tsx";
+import React, {useState} from "react";
+import CurrentDrawerNotes from "./CurrentDrawerNotes.tsx";
 
 export default function DrawersPage() {
-    return (<div className="w-screen h-screen bg-leaves-background bg-no-repeat bg-fixed bg-cover flex flex-col">
-            <NavBar/>
-            <div className="carousel carousel-center bg-base-300 max-w-md m-8 p-4 space-x-4 bg-neutral rounded-box">
-                <div className="carousel-item">
-                    <DrawerInformationCard drawer={drawer} infoType={DrawerInfoType.Position}/>
+    const [currentDrawerId, setCurrentDrawerId] = useState();
+    const [currentDrawer, setCurrentDrawer] = useState();
+
+
+    return (
+        <div className="w-full h-full bg-leaves-background bg-no-repeat bg-fixed bg-cover flex flex-col">
+            <NavBar />
+            <div className="w-full h-full grid grid-cols-6 grid-rows-8 gap-8">
+                <div className="bg-base-200 row-span-8 col-span-1">
+                    01
                 </div>
-                <div className="carousel-item">
-                    <DrawerInformationCard drawer={drawer} infoType={DrawerInfoType.Temperature}/>
+                <div className="bg-base-300 row-span-8 col-span-3 p-8 my-8 rounded-box">
+                    {/*<CurrentDrawerInformation drawer={currentDrawer}/>*/}
                 </div>
-                <div className="carousel-item">
-                    <DrawerInformationCard drawer={drawer} infoType={DrawerInfoType.MoistureGround}/>
-                </div>
-                <div className="carousel-item">
-                    <DrawerInformationCard drawer={drawer} infoType={DrawerInfoType.MoistureAir}/>
-                </div>
-                <div className="carousel-item">
-                    <DrawerInformationCard drawer={drawer} infoType={DrawerInfoType.Name}/>
-                </div>
-                <div className="carousel-item">
-                    <DrawerInformationCard drawer={drawer} infoType={DrawerInfoType.Content}/>
-                </div>
-                <div className="carousel-item">
-                    <DrawerInformationCard drawer={drawer} infoType={DrawerInfoType.Light}/>
-                </div>
-                <div className="carousel-item">
-                    <DrawerInformationCard drawer={drawer} infoType={DrawerInfoType.SeedingDate}/>
+                <div className="bg-base-300 row-span-8 col-span-2 my-8 rounded-box">
+                    {/*<CurrentDrawerNotes drawer={currentDrawer} />*/}
                 </div>
             </div>
         </div>
