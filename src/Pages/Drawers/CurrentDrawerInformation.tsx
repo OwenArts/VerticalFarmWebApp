@@ -8,10 +8,18 @@ interface CurrentDrawerInformationProps {
 }
 
 export default function CurrentDrawerInformation({ drawer }: CurrentDrawerInformationProps) {
+    if (drawer === undefined)
+        return(
+            <>
+            </>
+            // <div className={"grid grid-cols-1 gap-8 grid-rows-8"}>
+            //     <div className={"skeleton w-full h-full"}/>
+            // </div>
+        );
+    console.log(drawer)
     return (
         <div>
             <div className={"grid grid-cols-1 gap-8 grid-rows-8"}>
-                <CurrentInformation drawer={drawer} />
                 <CurrentInformation drawer={drawer} />
             </div>
         </div>
