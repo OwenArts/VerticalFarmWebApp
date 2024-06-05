@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+      "jsx": "react-jsx",
+      "allowSyntheticDefaultImports": true,
+      "allowImportingTsExtensions": true,
+      "lib": [
+        "es2016",
+        "dom"
+      ]
+    },
+  }
