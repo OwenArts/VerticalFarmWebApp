@@ -4,10 +4,10 @@ import Drawer from "../../DataType/Drawer.tsx";
 import {CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis} from 'recharts';
 
 const drawerData = [
-    new Drawer("id", "Closed", 22.5, 55, 40, "Drawer 1", "Arugula", true,  new Date(Date.now())),
-    new Drawer("id", "Closed", 24.3, 50, 42, "Drawer 2", "Arugula", true,  new Date(Date.now())),
-    new Drawer("id", "Closed", 21.8, 60, 38, "Drawer 3", "Lettuce", false,  new Date(Date.now())),
-    new Drawer("id", "Closed", 23.1, 58, 45, "Drawer 4", "Lettuce", false,  new Date(Date.now())),
+    new Drawer("id", "Closed", "Drawer 1", "Arugula", true, new Date(Date.now()), []),
+    new Drawer("id", "Closed", "Drawer 2", "Arugula", true, new Date(Date.now()), null),
+    new Drawer("id", "Closed", "Drawer 3", "Lettuce", false, new Date(Date.now()), null),
+    new Drawer("id", "Closed", "Drawer 4", "Lettuce", false, new Date(Date.now()), null),
 ];
 
 const generateDrawerData = () => {
@@ -54,7 +54,7 @@ function TemperatureTable() {
                 {drawerData.map((drawer, index) => (
                     <tr key={index} className="hover text-lg text-base-content bg-content-100">
                         <td>{drawer.name}</td>
-                        <td>{drawer.temperature} °C</td>
+                        <td>{drawer.GetMostRecentTemperature()} °C</td>
                     </tr>
                 ))}
                 </tbody>
@@ -77,7 +77,7 @@ function GroundMoistureTable() {
                 {drawerData.map((drawer, index) => (
                     <tr key={index} className="hover text-lg text-base-content bg-content-100">
                         <td>{drawer.name}</td>
-                        <td>{drawer.moistureGround} %</td>
+                        <td>{drawer.GetMostRecentMoistureGround()} %</td>
                     </tr>
                 ))}
                 </tbody>
@@ -100,7 +100,7 @@ function AirMoistureTable() {
                 {drawerData.map((drawer, index) => (
                     <tr key={index} className="hover text-lg text-base-content bg-content-100">
                         <td>{drawer.name}</td>
-                        <td>{drawer.moistureAir} %</td>
+                        <td>{drawer.GetMostRecentMoistureAir()} %</td>
                     </tr>
                 ))}
                 </tbody>

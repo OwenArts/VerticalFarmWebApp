@@ -15,4 +15,21 @@ export default class DrawerData {
         this.MoistureGround = MoistureGround;
         this.TimeStamp = TimeStamp;
     }
+
+    // Static method to create an instance from a JSON object
+    static fromJSON(json: any): DrawerData {
+        return new DrawerData(
+            json.DataHistorieId,
+            json.LadeId,
+            json.Temperatuur,
+            json.Luchtvochtigheid,
+            json.Bodemvochtigheid,
+            new Date(json.TimeStamp)
+        );
+    }
+
+    // Static method to sort an array of DrawerData by TimeStamp
+    static sortByTimeStamp(dataArray: DrawerData[]): DrawerData[] {
+        return dataArray.sort((a, b) => a.TimeStamp.getTime() - b.TimeStamp.getTime());
+    }
 }
