@@ -2,11 +2,23 @@ import NavBar from "../../Components/NavBar.tsx";
 import CurrentDrawerInformation from "./CurrentDrawerInformation.tsx";
 import React, {useState} from "react";
 import CurrentDrawerNotes from "./CurrentDrawerNotes.tsx";
+import VerticalFarm from "../../DataType/VerticalFarm.tsx";
 
 export default function DrawersPage() {
     const [currentDrawerId, setCurrentDrawerId] = useState();
     const [currentDrawer, setCurrentDrawer] = useState();
 
+    const verticalFarm = new VerticalFarm([]);
+
+    const fetchDrawers = () => {
+        console.log("Starting to fetch the drawers.");
+        verticalFarm.getAllDrawers().then(fetchedDrawers => {
+            console.log(fetchedDrawers);
+        }).catch(error => {
+            console.error("Error fetching drawers:", error);
+        });
+        console.log("Finished fetching the drawers.");
+    };
 
     return (
         <div className="w-full h-full bg-leaves-background bg-no-repeat bg-fixed bg-cover flex flex-col">
@@ -20,6 +32,7 @@ export default function DrawersPage() {
                 </div>
                 <div className="bg-base-300 row-span-8 col-span-2 my-8 rounded-box">
                     {/*<CurrentDrawerNotes drawer={currentDrawer} />*/}
+                    <button onClick={fetchDrawers}>Fetch Data</button>
                 </div>
             </div>
         </div>
