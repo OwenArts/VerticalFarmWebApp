@@ -11,7 +11,11 @@ export default class VerticalFarm {
     public async getAllDrawers() {
         try {
             // Step 1: Fetch all DrawerId values
-            const drawerIdsResponse = await fetch('https://y0zitbyvv6.execute-api.eu-central-1.amazonaws.com/Prod/Kast/b6ccef9d-e27e-465a-977b-996f80f40571');
+            const drawerIdsResponse = await fetch('https://y0zitbyvv6.execute-api.eu-central-1.amazonaws.com/Prod/Kast/b6ccef9d-e27e-465a-977b-996f80f40571',
+                {
+                    method: "GET",
+                    headers: { "Content-Type": "application/json" }
+                });
             const drawerIdsData = await drawerIdsResponse.json();
 
             // Initialize drawers
@@ -19,7 +23,11 @@ export default class VerticalFarm {
 
             // Step 2: Fetch and update each drawer's details
             await Promise.all(this.Drawers.map(async drawer => {
-                const drawerDetailResponse = await fetch(`https://y0zitbyvv6.execute-api.eu-central-1.amazonaws.com/Prod/Lade/${drawer.DrawerId}`);
+                const drawerDetailResponse = await fetch(`https://y0zitbyvv6.execute-api.eu-central-1.amazonaws.com/Prod/Lade/${drawer.DrawerId}`,
+                    {
+                        method: "GET",
+                        headers: { "Content-Type": "application/json" }
+                    });
                 const drawerDetailData = await drawerDetailResponse.json();
 
                 if (drawerDetailData.length > 0) {
@@ -31,7 +39,11 @@ export default class VerticalFarm {
 
             // Step 3: Fetch and update each drawer's data
             await Promise.all(this.Drawers.map(async drawer => {
-                const drawerDataResponse = await fetch(`https://y0zitbyvv6.execute-api.eu-central-1.amazonaws.com/Prod/Data/${drawer.DrawerId}`);
+                const drawerDataResponse = await fetch(`https://y0zitbyvv6.execute-api.eu-central-1.amazonaws.com/Prod/Data/${drawer.DrawerId}`,
+                    {
+                        method: "GET",
+                        headers: { "Content-Type": "application/json" }
+                    });
                 const drawerData = await drawerDataResponse.json();
 
                 drawer.data = drawerData.map(DrawerData.fromJSON);

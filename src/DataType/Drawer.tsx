@@ -11,11 +11,19 @@ export default class Drawer {
     private _seedingDate: Date;
 
 
-    constructor(drawerId: string, drawerPosition: string, name: string, content: string, light: boolean, seedingDate: Date, data: DrawerData[]) {
+    constructor(
+        drawerId: string,
+        drawerPosition: string,
+        name: string,
+        content: string,
+        light: boolean,
+        seedingDate: Date,
+        data: DrawerData[] = []
+    ) {
         this.DrawerId = drawerId;
-        this.drawerPosition = drawerPosition;
-        this.name = name;
-        this.content = content;
+        this.drawerPosition = drawerPosition.length===0? "Closed" : drawerPosition;
+        this.name = name.length===0? "Drawer" : name;
+        this.content = content.length===0? "Lettuce" : name;
         this.light = light;
         this._seedingDate = seedingDate;
         this.data = data;

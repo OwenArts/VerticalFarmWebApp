@@ -1,14 +1,15 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import NavBar from "../../Components/NavBar.tsx";
 import Drawer from "../../DataType/Drawer.tsx";
 import {CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis} from 'recharts';
+import VerticalFarm from "../../DataType/VerticalFarm.tsx";
 
-const drawerData = [
-    new Drawer("id", "Closed", "Drawer 1", "Arugula", true, new Date(Date.now()), []),
-    new Drawer("id", "Closed", "Drawer 2", "Arugula", true, new Date(Date.now()), null),
-    new Drawer("id", "Closed", "Drawer 3", "Lettuce", false, new Date(Date.now()), null),
-    new Drawer("id", "Closed", "Drawer 4", "Lettuce", false, new Date(Date.now()), null),
-];
+// const drawerData = [
+//     new Drawer("id", "Closed", "Drawer 1", "Arugula", true, new Date(Date.now()), null),
+//     new Drawer("id", "Closed", "Drawer 2", "Arugula", true, new Date(Date.now()), null),
+//     new Drawer("id", "Closed", "Drawer 3", "Lettuce", false, new Date(Date.now()), null),
+//     new Drawer("id", "Closed", "Drawer 4", "Lettuce", false, new Date(Date.now()), null),
+// ];
 
 const generateDrawerData = () => {
     const data = [];
@@ -40,7 +41,7 @@ const generateDrawerData = () => {
 
 const data = generateDrawerData();
 
-function TemperatureTable() {
+function TemperatureTable({ drawers }) {
     return (
         <div className="overflow-y-auto rounded-2xl h-full w-full">
             <table className="table table-lg table-pin-rows w-full h-full">
@@ -51,7 +52,7 @@ function TemperatureTable() {
                 </tr>
                 </thead>
                 <tbody>
-                {drawerData.map((drawer, index) => (
+                {drawers.map((drawer, index) => (
                     <tr key={index} className="hover text-lg text-base-content bg-content-100">
                         <td>{drawer.name}</td>
                         <td>{drawer.GetMostRecentTemperature()} °C</td>
@@ -63,7 +64,7 @@ function TemperatureTable() {
     );
 }
 
-function GroundMoistureTable() {
+function GroundMoistureTable({ drawers }) {
     return (
         <div className="overflow-y-auto rounded-2xl h-full w-full">
             <table className="table table-lg table-pin-rows w-full h-full">
@@ -74,7 +75,7 @@ function GroundMoistureTable() {
                 </tr>
                 </thead>
                 <tbody>
-                {drawerData.map((drawer, index) => (
+                {drawers.map((drawer, index) => (
                     <tr key={index} className="hover text-lg text-base-content bg-content-100">
                         <td>{drawer.name}</td>
                         <td>{drawer.GetMostRecentMoistureGround()} %</td>
@@ -86,7 +87,7 @@ function GroundMoistureTable() {
     );
 }
 
-function AirMoistureTable() {
+function AirMoistureTable({ drawers }) {
     return (
         <div className="overflow-y-auto rounded-2xl h-full w-full">
             <table className="table table-lg table-pin-rows w-full h-full">
@@ -97,7 +98,7 @@ function AirMoistureTable() {
                 </tr>
                 </thead>
                 <tbody>
-                {drawerData.map((drawer, index) => (
+                {drawers.map((drawer, index) => (
                     <tr key={index} className="hover text-lg text-base-content bg-content-100">
                         <td>{drawer.name}</td>
                         <td>{drawer.GetMostRecentMoistureAir()} %</td>
@@ -109,7 +110,7 @@ function AirMoistureTable() {
     );
 }
 
-function PositionTable() {
+function PositionTable({ drawers }) {
     return (
         <div className="overflow-y-auto rounded-2xl h-full w-full">
             <table className="table table-lg table-pin-rows w-full h-full">
@@ -120,7 +121,7 @@ function PositionTable() {
                 </tr>
                 </thead>
                 <tbody>
-                {drawerData.map((drawer, index) => (
+                {drawers.map((drawer, index) => (
                     <tr key={index} className="hover text-lg text-base-content bg-content-100">
                         <td>{drawer.name}</td>
                         <td>{drawer.drawerPosition}</td>
@@ -132,7 +133,7 @@ function PositionTable() {
     );
 }
 
-function ContentTable() {
+function ContentTable({ drawers }) {
     return (
         <div className="overflow-y-auto rounded-2xl h-full w-full">
             <table className="table table-lg table-pin-rows w-full h-full">
@@ -143,7 +144,7 @@ function ContentTable() {
                 </tr>
                 </thead>
                 <tbody>
-                {drawerData.map((drawer, index) => (
+                {drawers.map((drawer, index) => (
                     <tr key={index} className="hover text-lg text-base-content bg-content-100">
                         <td>{drawer.name}</td>
                         <td>{drawer.content}</td>
@@ -155,7 +156,7 @@ function ContentTable() {
     );
 }
 
-function LightTable() {
+function LightTable({ drawers }) {
     return (
         <div className="overflow-y-auto rounded-2xl h-full w-full">
             <table className="table table-lg table-pin-rows w-full h-full">
@@ -166,7 +167,7 @@ function LightTable() {
                 </tr>
                 </thead>
                 <tbody>
-                {drawerData.map((drawer, index) => (
+                {drawers.map((drawer, index) => (
                     <tr key={index} className="hover text-lg text-base-content bg-content-100">
                         <td>{drawer.name}</td>
                         <td>{drawer.light ? "On" : "Off"}</td>
@@ -198,6 +199,17 @@ function DrawerChart() {
 }
 
 export default function Homepage() {
+    const [drawers, setDrawers] = useState([]);
+
+    useEffect(() => {
+        async function fetchData() {
+            const farm = new VerticalFarm([]);
+            const fetchedDrawers = await farm.getAllDrawers();
+            setDrawers(fetchedDrawers);
+        }
+        fetchData();
+    }, []); // Empty dependency array ensures useEffect runs only once
+
     return (
         <div className="w-screen h-screen bg-leaves-background bg-no-repeat bg-fixed bg-cover flex flex-col">
             <NavBar/>
@@ -206,27 +218,27 @@ export default function Homepage() {
                     className="h-full w-full lg:grid lg:grid-cols-4 lg:grid-rows-4 lg:gap-8 md:grid md:grid-cols-2 md:grid-rows-6 md:gap-4 sm:grid sm:grid-cols-1 sm:grid-rows-9 sm:gap-4">
                     <div
                         className="bg-base-300 rounded-2xl lg:row-span-2 lg:col-span-1 md:row-span-2 md:col-span-1 sm:row-span-2 sm:col-span-1 w-full h-full min-h-12 sm:mb-8 md:mb-8 lg:mb-0">
-                        <ContentTable/>
+                        <ContentTable drawers={drawers}/>
                     </div>
                     <div
                         className="bg-base-300 rounded-2xl lg:row-span-2 lg:col-span-1 md:row-span-2 md:col-span-1 sm:row-span-2 sm:col-span-1 w-full h-full min-h-12 sm:mb-8 md:mb-8 lg:mb-0">
-                        <TemperatureTable/>
+                        <TemperatureTable drawers={drawers}/>
                     </div>
                     <div
                         className="bg-base-300 rounded-2xl lg:row-span-2 lg:col-span-1 md:row-span-2 md:col-span-1 sm:row-span-2 sm:col-span-1 w-full h-full min-h-12 sm:mb-8 md:mb-8 lg:mb-0">
-                        <LightTable/>
+                        <LightTable drawers={drawers}/>
                     </div>
                     <div
                         className="bg-base-300 rounded-2xl lg:row-span-2 lg:col-span-1 md:row-span-2 md:col-span-1 sm:row-span-2 sm:col-span-1 w-full h-full min-h-12 sm:mb-8 md:mb-8 lg:mb-0">
-                        <PositionTable/>
+                        <PositionTable drawers={drawers}/>
                     </div>
                     <div
                         className="bg-base-300 rounded-2xl lg:row-span-2 lg:col-span-1 md:row-span-2 md:col-span-1 sm:row-span-2 sm:col-span-1 w-full h-full min-h-12 sm:mb-8 md:mb-8 lg:mb-0">
-                        <GroundMoistureTable/>
+                        <GroundMoistureTable drawers={drawers}/>
                     </div>
                     <div
                         className="bg-base-300 rounded-2xl lg:row-span-2 lg:col-span-1 md:row-span-2 md:col-span-1 sm:row-span-2 sm:col-span-1 w-full h-full min-h-12 sm:mb-8 md:mb-8 lg:mb-0">
-                        <AirMoistureTable/>
+                        <AirMoistureTable drawers={drawers}/>
                     </div>
                     <div
                         className="bg-base-300 rounded-2xl lg:row-span-2 lg:col-span-2 md:row-span-2 md:col-span-2 sm:row-span-2 sm:col-span-2 w-full h-full min-h-12 sm:mb-0 md:mb-0 lg:mb-0">

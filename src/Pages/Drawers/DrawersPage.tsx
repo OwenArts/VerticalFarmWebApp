@@ -32,7 +32,7 @@ export default function DrawersPage() {
                 </div>
                 <div className="bg-base-300 row-span-8 col-span-2 my-8 rounded-box">
                     {/*<CurrentDrawerNotes drawer={currentDrawer} />*/}
-                    <button onClick={fetchDrawers}>Fetch Data</button>
+                    {/*<button onClick={fetchDrawers}>Fetch Data</button>*/}
                 </div>
             </div>
         </div>
