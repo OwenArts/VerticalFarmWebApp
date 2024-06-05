@@ -12,11 +12,11 @@ const getDrawerInfoValue = (drawer: Drawer, infoType: DrawerInfoType): string =>
         case DrawerInfoType.Position:
             return drawer.drawerPosition;
         case DrawerInfoType.Temperature:
-            return (drawer.temperature.toString() + ' °C');
+            return (drawer.GetMostRecentTemperature() + ' °C');
         case DrawerInfoType.MoistureGround:
-            return (drawer.moistureGround.toString() + '%');
+            return (drawer.GetMostRecentMoistureGround() + '%');
         case DrawerInfoType.MoistureAir:
-            return (drawer.moistureAir.toString() + '%');
+            return (drawer.GetMostRecentMoistureAir() + '%');
         case DrawerInfoType.Name:
             return drawer.name;
         case DrawerInfoType.Content:
