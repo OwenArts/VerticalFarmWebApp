@@ -9,7 +9,7 @@ import DrawersPage from "./Pages/Drawers/DrawersPage.tsx";
 function App() {
     // localStorage.clear()
     return (
-        <>
+        <div className={"w-screen h-screen bg-leaves-background bg-no-repeat bg-fixed bg-cover flex flex-col"}>
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Homepage/>}/>
@@ -18,7 +18,7 @@ function App() {
                     <Route path="/settings" element={<DigitalClock/>}/>
                 </Routes>
             </BrowserRouter>
-        </>
+        </div>
     );
 }
 
