@@ -30,14 +30,19 @@ export default function DrawersPage() {
 
     return (
         <div className="min-h-screen bg-leaves-background bg-no-repeat bg-fixed bg-cover">
-            <NavBar />
+            <NavBar/>
             <div className="grid grid-cols-6 grid-rows-8 gap-8">
                 <div className="bg-base-200 row-span-8 col-span-1 overflow-y-auto">
                     {/* Add overflow-y-auto to enable vertical scrolling */}
                     <ol>
                         {drawers.map((drawer) => (
                             <li key={drawer.DrawerId}>
-                                <button onClick={() => setCurrentDrawer(drawer)}>
+                                <button className={`${
+                                    currentDrawer && currentDrawer.DrawerId === drawer.DrawerId
+                                                ? "bg-alpine"
+                                                : "bg-red"
+                                        } p-2 text-white`}
+                                        onClick={() => setCurrentDrawer(drawer)}>
                                     {drawer.name}
                                 </button>
                             </li>
@@ -47,13 +52,13 @@ export default function DrawersPage() {
                 <div className="bg-base-300 row-span-8 col-span-3 p-8 my-8 rounded-box overflow-y-auto">
                     {/* Add overflow-y-auto to enable vertical scrolling */}
                     {currentDrawer && (
-                        <CurrentDrawerInformation drawer={currentDrawer} />
+                        <CurrentDrawerInformation drawer={currentDrawer}/>
                     )}
                 </div>
                 <div className="bg-base-300 row-span-8 col-span-2 my-8 rounded-box overflow-y-auto">
                     {/* Add overflow-y-auto to enable vertical scrolling */}
                     {currentDrawer && (
-                        <CurrentDrawerNotes drawer={currentDrawer} />
+                        <CurrentDrawerNotes drawer={currentDrawer}/>
                     )}
                 </div>
             </div>
