@@ -89,7 +89,7 @@ function DrawerChartAirTemperature({data}) {
                 <YAxis tick={{ fill: '#DAD7CD' }}/>
                 <Tooltip contentStyle={{ backgroundColor: 'rgba(255, 255, 255, 0.6)' }}/>
                 <Legend/>
-                <Line type="monotone" dataKey="Temperature" stroke="#ffc658" dot={false}/>
+                <Line type="monotone" dataKey="Temperature" stroke="#FF5B00" dot={false}/>
             </LineChart>
         </ResponsiveContainer>
     );
@@ -113,7 +113,7 @@ function DrawerChartAirMoisture({data}) {
                 <YAxis tick={{ fill: '#DAD7CD' }}/>
                 <Tooltip contentStyle={{ backgroundColor: 'rgba(255, 255, 255, 0.6)' }}/>
                 <Legend/>
-                <Line type="monotone" dataKey="MoistureAir" stroke="#ffc658" dot={false}/>
+                <Line type="monotone" dataKey="MoistureAir" stroke="#FF5B00" dot={false}/>
             </LineChart>
         </ResponsiveContainer>
     );
@@ -137,7 +137,7 @@ function DrawerChartGroundMoisture({data}) {
                 <YAxis tick={{ fill: '#DAD7CD' }}/>
                 <Tooltip contentStyle={{ backgroundColor: 'rgba(255, 255, 255, 0.6)' }}/>
                 <Legend/>
-                <Line type="monotone" dataKey="MoistureGround" stroke="#ffc658" dot={false}/>
+                <Line type="monotone" dataKey="MoistureGround" stroke="#FF5B00" dot={false}/>
             </LineChart>
         </ResponsiveContainer>
     );
