@@ -7,7 +7,8 @@ import DigitalClock from "./Components/DigitalClock.tsx";
 import DrawersPage from "./Pages/Drawers/DrawersPage.tsx";
 
 function App() {
-    // localStorage.clear()
+    //IMPORTANT: make sure to use Firefox with the following extension enabled: CORS Everywhere
+
     return (
         <div className={"full-screen bg-leaves-background bg-no-repeat bg-fixed bg-cover flex flex-col"}>
             <BrowserRouter>
