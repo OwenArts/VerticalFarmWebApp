@@ -4,7 +4,6 @@ import {Bounce, toast, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function NoMatch() {
-    const [showError, setShowError] = useState(false);
     const notify = () => toast.warning('This feature is not available.', {
         position: "top-right",
         autoClose: 5000,
@@ -37,7 +36,6 @@ export default function NoMatch() {
                     </a>
                 </div>
                 <ToastContainer/>
-                {showError && <ErrorAlert message={"This feature is not available"}/>}
             </div>
         </main>
     );

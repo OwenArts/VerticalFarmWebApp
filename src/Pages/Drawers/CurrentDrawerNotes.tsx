@@ -7,7 +7,7 @@ interface CurrentDrawerInformationProps {
     drawer: Drawer;
 }
 
-export default function CurrentDrawerNotes({ drawer }: CurrentDrawerInformationProps) {
+export default function CurrentDrawerNotes({drawer}: CurrentDrawerInformationProps) {
     const [drawerNotes, setDrawerNotes] = useState<DrawerNote[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
 
@@ -33,14 +33,20 @@ export default function CurrentDrawerNotes({ drawer }: CurrentDrawerInformationP
     return (
         <div className={"h-fit p-4"}>
             {loading && (
-                <p>Loading notes...</p>
+                <div>
+                    <p>Loading notes...</p>
+                    <span className="loading loading-dots loading-lg"></span>
+                </div>
             )}
             {!loading && drawerNotes.length === 0 && (
                 <p>No notes available for this drawer.</p>
             )}
             {drawerNotes.map(note => (
-                <div key={note.NoteId} className="bg-secondary rounded-lg my-4 p-2 flex items-center text-base-300 font-black text-2xl truncate">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-notes stroke-base-300 fill-none" width="44" height="44" viewBox="0 0 24 24" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <div key={note.NoteId}
+                     className="bg-secondary rounded-lg my-4 p-2 flex items-center text-base-300 font-black text-2xl truncate">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         className="icon icon-tabler icon-tabler-notes stroke-base-300 fill-none" width="44" height="44"
+                         viewBox="0 0 24 24" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                         <path d="M5 3m0 2a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2z"/>
                         <path d="M9 7l6 0"/>
@@ -58,7 +64,6 @@ export default function CurrentDrawerNotes({ drawer }: CurrentDrawerInformationP
 
 
 async function fetchedNotes(drawerId: string): Promise<DrawerNote[]> {
-    console.log(`https://y0zitbyvv6.execute-api.eu-central-1.amazonaws.com/Prod/Notities/${drawerId}`);
     const notesResponse = await fetch(`https://y0zitbyvv6.execute-api.eu-central-1.amazonaws.com/Prod/Notities/${drawerId}`, {
         method: "GET",
         headers: {"Content-Type": "application/json"}
@@ -69,8 +74,6 @@ async function fetchedNotes(drawerId: string): Promise<DrawerNote[]> {
     }
 
     const notesData = await notesResponse.json();
-
-    console.log("Fetched notes:" + notesData)
 
     // Map JSON data to DrawerNote objects
     const drawerNotes: DrawerNote[] = notesData.map((note: any) => new DrawerNote(
