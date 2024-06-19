@@ -14,6 +14,7 @@ class FarmDataManager {
     // @ts-ignore
     static #instance = null;
 
+    // @ts-ignore
     private _verticalFarm: VerticalFarm = new VerticalFarm([]);
 
     constructor() {
@@ -35,8 +36,6 @@ class FarmDataManager {
         fetch('https://y0zitbyvv6.execute-api.eu-central-1.amazonaws.com/Prod/Data/14006743-A52E-4811-9E36-4728B8D95DAE')
             .then(response => response.json())
             .then(data => {
-                console.log(data)
-
                 const drawerDataArray = data.map(DrawerData.fromJSON);
                 const sortedDrawerDataArray = DrawerData.sortByTimeStamp(drawerDataArray);
             })
