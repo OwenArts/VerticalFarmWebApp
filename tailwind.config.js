@@ -15,18 +15,6 @@ export default {
             colors: {
                 "Countdown": "#006341",
                 "Countdown-content": "#ccd2d2",
-                "Red-Bull": "#3671c6",
-                "Racing-Bulls": "#6692ff",
-                "McLaren": "#ff8000",
-                "Mercedes": "#27f4d2",
-                "Sauber": "#52e252",
-                "Williams": "#64c4ff",
-                "Ferrari": "#e8002d",
-                "Alpine": "#ff87bc",
-                "Haas": "#b6babd",
-                "Aston-Martin": "#229971",
-                "Fastest-Lap": "#800ff1",
-                "Fastest-Lap-content": "#ccd2d2",
             },
             fontFamily: {
                 'Standard': "QuickSand"
