@@ -11,134 +11,58 @@ interface CurrentDrawerInformationProps {
 }
 
 export default function CurrentDrawerInformation({drawer}: CurrentDrawerInformationProps) {
-    if (drawer === undefined)
-        return (
-            <></>
-        );
-
-    console.log(drawer);
+    if (!drawer) return null;
 
     return (
         <div className="flex flex-col gap-4 h-screen overflow-auto">
             <div className="flex-grow">
-                <CurrentInformation drawer={drawer} />
+                <CurrentInformation drawer={drawer}/>
             </div>
-            <div className="flex-grow bg-base-100 p-4 space-x-4 rounded-box w-full overflow-auto">
-                <section>Temperatuur</section>
-                <DrawerChartAirTemperature data={drawer.data} />
-            </div>
-            <div className="flex-grow bg-base-100 p-4 space-x-4 rounded-box w-full overflow-auto">
-                <section>Grond vochtigheid</section>
-                <DrawerChartGroundMoisture data={drawer.data} />
-            </div>
-            <div className="flex-grow bg-base-100 p-4 space-x-4 rounded-box w-full overflow-auto">
-                <section>Lucht vochtigheid</section>
-                <DrawerChartAirMoisture data={drawer.data} />
-            </div>
+            <DrawerChart title="Temperatuur" dataKey="Temperature" data={drawer.data}/>
+            <DrawerChart title="Grond vochtigheid" dataKey="MoistureGround" data={drawer.data}/>
+            <DrawerChart title="Lucht vochtigheid" dataKey="MoistureAir" data={drawer.data}/>
         </div>
     );
 }
-
 
 function CurrentInformation({drawer}: CurrentDrawerInformationProps) {
     return (
         <div className="carousel carousel-center bg-base-100 p-4 space-x-4 rounded-box w-full">
-            <div className="carousel-item">
-                <DrawerInformationCard drawer={drawer} infoType={DrawerInfoType.Name}/>
-            </div>
-            <div className="carousel-item">
-                <DrawerInformationCard drawer={drawer} infoType={DrawerInfoType.Content}/>
-            </div>
-            <div className="carousel-item">
-                <DrawerInformationCard drawer={drawer} infoType={DrawerInfoType.SeedingDate}/>
-            </div>
-            <div className="carousel-item">
-                <DrawerInformationCard drawer={drawer} infoType={DrawerInfoType.Temperature}/>
-            </div>
-            <div className="carousel-item">
-                <DrawerInformationCard drawer={drawer} infoType={DrawerInfoType.MoistureGround}/>
-            </div>
-            <div className="carousel-item">
-                <DrawerInformationCard drawer={drawer} infoType={DrawerInfoType.MoistureAir}/>
-            </div>
-            <div className="carousel-item">
-                <DrawerInformationCard drawer={drawer} infoType={DrawerInfoType.Position}/>
-            </div>
-            <div className="carousel-item">
-                <DrawerInformationCard drawer={drawer} infoType={DrawerInfoType.Light}/>
-            </div>
+            {Object.values(DrawerInfoType).map((infoType) => (
+                <div key={infoType} className="carousel-item">
+                    <DrawerInformationCard drawer={drawer} infoType={infoType}/>
+                </div>
+            ))}
         </div>
     );
 }
 
-function DrawerChartAirTemperature({data}) {
-    if (data.length === 0)
-        return (<div className="skeleton w-full h-full"></div>);
-
-    console.log(data);
-
-    const formatXAxis = (tickItem) => {
-        return moment(tickItem).format("DD-MM-YYYY HH:mm:ss");
-    }
-
-    return (
-        <ResponsiveContainer width="100%" height="100%">
-            <LineChart data={DrawerData.sortByTimeStamp(data)}>
-                <CartesianGrid strokeDasharray="3 3"/>
-                <XAxis dataKey="TimeStamp" tickFormatter={formatXAxis} tick={{ fill: '#DAD7CD' }}/>
-                <YAxis tick={{ fill: '#DAD7CD' }}/>
-                <Tooltip contentStyle={{ backgroundColor: 'rgba(255, 255, 255, 0.6)' }}/>
-                <Legend/>
-                <Line type="monotone" dataKey="Temperature" stroke="#FF5B00" dot={false}/>
-            </LineChart>
-        </ResponsiveContainer>
-    );
+interface DrawerChartProps {
+    title: string;
+    dataKey: string;
+    data: DrawerData[];
 }
 
-function DrawerChartAirMoisture({data}) {
-    if (data.length === 0)
-        return (<div className="skeleton w-full h-full"></div>);
+function DrawerChart({title, dataKey, data}: DrawerChartProps) {
+    if (data.length === 0) return <div className="skeleton w-full h-full"></div>;
 
-    console.log(data);
-
-    const formatXAxis = (tickItem) => {
-        return moment(tickItem).format("DD-MM-YYYY HH:mm:ss");
-    }
+    const formatXAxis = (tickItem) => moment(tickItem).format("DD-MM-YYYY HH:mm:ss");
 
     return (
-        <ResponsiveContainer width="100%" height="100%">
-            <LineChart data={DrawerData.sortByTimeStamp(data)}>
-                <CartesianGrid strokeDasharray="3 3"/>
-                <XAxis dataKey="TimeStamp" tickFormatter={formatXAxis} tick={{ fill: '#DAD7CD' }}/>
-                <YAxis tick={{ fill: '#DAD7CD' }}/>
-                <Tooltip contentStyle={{ backgroundColor: 'rgba(255, 255, 255, 0.6)' }}/>
-                <Legend/>
-                <Line type="monotone" dataKey="MoistureAir" stroke="#FF5B00" dot={false}/>
-            </LineChart>
-        </ResponsiveContainer>
-    );
-}
-
-function DrawerChartGroundMoisture({data}) {
-    if (data.length === 0)
-        return (<div className="skeleton w-full h-full"></div>);
-
-    console.log(data);
-
-    const formatXAxis = (tickItem) => {
-        return moment(tickItem).format("DD-MM-YYYY HH:mm:ss");
-    }
-
-    return (
-        <ResponsiveContainer width="100%" height="100%">
-            <LineChart data={DrawerData.sortByTimeStamp(data)}>
-                <CartesianGrid strokeDasharray="3 3"/>
-                <XAxis dataKey="TimeStamp" tickFormatter={formatXAxis} tick={{ fill: '#DAD7CD' }}/>
-                <YAxis tick={{ fill: '#DAD7CD' }}/>
-                <Tooltip contentStyle={{ backgroundColor: 'rgba(255, 255, 255, 0.6)' }}/>
-                <Legend/>
-                <Line type="monotone" dataKey="MoistureGround" stroke="#FF5B00" dot={false}/>
-            </LineChart>
-        </ResponsiveContainer>
+        <div className="flex-grow bg-base-100 p-4 space-x-4 rounded-box w-full overflow-hidden">
+            <section className="mb-4 font-black text-lg text-base-content">{title}</section>
+            <div style={{width: '100%', height: '100%'}}>
+                <ResponsiveContainer width="90%" height="100%">
+                    <LineChart data={DrawerData.sortByTimeStamp(data)}>
+                        <CartesianGrid strokeDasharray="3 3"/>
+                        <XAxis dataKey="TimeStamp" tickFormatter={formatXAxis} tick={{fill: '#DAD7CD'}}/>
+                        <YAxis tick={{fill: '#DAD7CD'}}/>
+                        <Tooltip contentStyle={{backgroundColor: 'rgba(255, 255, 255, 0.6)'}}/>
+                        <Legend/>
+                        <Line type="monotone" dataKey={dataKey} stroke="#FF5B00" dot={false}/>
+                    </LineChart>
+                </ResponsiveContainer>
+            </div>
+        </div>
     );
 }
