@@ -59,7 +59,7 @@ function DrawerChart({title, dataKey, data}: DrawerChartProps) {
                         <YAxis tick={{fill: '#DAD7CD'}}/>
                         <Tooltip contentStyle={{backgroundColor: 'rgba(255, 255, 255, 0.6)'}}/>
                         <Legend/>
-                        <Line type="monotone" dataKey={dataKey} stroke="#FF5B00" dot={false}/>
+                        <Line type="monotone" dataKey={dataKey} stroke="#FF5B00" dot={false} strokeWidth={3}/>
                     </LineChart>
                 </ResponsiveContainer>
             </div>
