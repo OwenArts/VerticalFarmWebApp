@@ -67,9 +67,9 @@ function DrawerChart({drawer}) {
                 <YAxis/>
                 <Tooltip contentStyle={{backgroundColor: 'rgba(255, 255, 255, 0.6)'}}/>
                 <Legend/>
-                <Line type="monotone" dataKey="Temperature" stroke="#ff6961" dot={false}/>
-                <Line type="monotone" dataKey="MoistureAir" stroke="#88f9d4" dot={false}/>
-                <Line type="monotone" dataKey="MoistureGround" stroke="#d4a017" dot={false}/>
+                <Line type="monotone" dataKey="Temperature" stroke="#ff6961" dot={false}  strokeWidth={3}/>
+                <Line type="monotone" dataKey="MoistureAir" stroke="#88f9d4" dot={false}  strokeWidth={3}/>
+                <Line type="monotone" dataKey="MoistureGround" stroke="#d4a017" dot={false}  strokeWidth={3}/>
             </LineChart>
         </ResponsiveContainer>
     );
